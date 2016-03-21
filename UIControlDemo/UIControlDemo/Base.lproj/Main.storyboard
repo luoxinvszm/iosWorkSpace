@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="UIControlDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fW3-l2-0L2">
+                                <rect key="frame" x="52" y="315" width="123" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2A-ym-DPL">
+                                <rect key="frame" x="238" y="159" width="125" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonDownRepeat:" destination="vXZ-lx-hvc" eventType="touchDownRepeat" id="f8T-ZH-fb7"/>
+                                    <action selector="buttonDragEnter:" destination="vXZ-lx-hvc" eventType="touchDragEnter" id="hdj-3O-D6Y"/>
+                                    <action selector="buttonDragInside:" destination="vXZ-lx-hvc" eventType="touchDragInside" id="mzf-XB-gCK"/>
+                                    <action selector="buttonDragOutside:" destination="vXZ-lx-hvc" eventType="touchDragOutside" id="duq-Ap-9QW"/>
+                                    <action selector="buttonTouchDown:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aJY-QJ-CF1"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIM-1k-NLh">
+                                <rect key="frame" x="252" y="96" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editorBegin:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="l2E-Vq-9mh"/>
+                                    <action selector="editorChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="98K-U2-zwd"/>
+                                    <action selector="editorEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="Ozt-rX-ifC"/>
+                                    <action selector="editorEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="IC1-2Y-f1i"/>
+                                </connections>
+                            </textField>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HpH-bx-Zz2">
+                                <rect key="frame" x="241" y="241" width="118" height="31"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="I2A-ym-DPL" secondAttribute="centerX" constant="-7" id="abI-m8-BqL"/>
+                            <constraint firstAttribute="centerX" secondItem="I2A-ym-DPL" secondAttribute="centerX" constant="-0.5" id="ekd-Fl-gZx"/>
+                            <constraint firstAttribute="centerX" secondItem="PIM-1k-NLh" secondAttribute="centerX" constant="-0.5" id="qMN-N5-lKU"/>
+                            <constraint firstAttribute="centerX" secondItem="I2A-ym-DPL" secondAttribute="centerX" constant="-0.5" id="wEo-3b-kyW"/>
+                            <constraint firstAttribute="centerX" secondItem="HpH-bx-Zz2" secondAttribute="centerX" constant="-9" id="wfj-Qz-rS2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button1" destination="I2A-ym-DPL" id="Q6K-2F-wr5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
