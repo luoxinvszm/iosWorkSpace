@@ -13,6 +13,12 @@ class RestaurantTableViewCotroller: UITableViewController {
     var restaurant = ["咖啡胡同","霍米","茶。家","洛伊斯咖啡","贝蒂生蚝","福奇餐馆","阿波画室","小碗大胃","虾吃虾涮","福厨","纸上烤鱼",
         "伯克街面包坊","嘉华饼屋","黑氏巧克力","惠灵顿雪梨","布鲁克林塔菲","格雷厄姆大街肉","华夫饼 & 沃夫","眼光咖啡","震颤酒吧","巴拉菲娜","多尼西亚","皇家橡树","秦咖啡"]
     
+    var rType = ["西餐","西餐","中餐","西餐","海鲜","广式","休闲","中餐","火锅","中餐","烧烤",
+        "糕点","糕点","零食","水果","西餐","烤肉","面包","饮品","休闲","西餐","西餐","中餐","饮品"]
+    
+    var rLocation = ["上海","北京","杭州","西南","海南","广州","西安","大理","丽江","昆明","西双版纳",
+        "会泽","曲靖","宜昌","武汉","长沙","贵阳","成都","重庆","施恩","长阳","陆良","大海草上","呼和浩特"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,14 +49,26 @@ class RestaurantTableViewCotroller: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CustomTableViewCell
 
-        cell.textLabel?.text = restaurant[indexPath.row]
-        cell.imageView?.image = UIImage(named: "basic-lifecycle")
+        cell.name.text = restaurant[indexPath.row]
+        cell.type.text = rType[indexPath.row]
+        cell.location.text = rLocation[indexPath.row]
+        cell.img.image = UIImage(named: "basic-lifecycle")
+        cell.img.layer.cornerRadius = cell.img.frame.size.width / 2 //图片圆角化，正方形内切圆半径为正方形边长一半
+        
+        cell.img.clipsToBounds = true//图片布局生效
+        
+        //cell.textLabel?.text = restaurant[indexPath.row]
+       // cell.imageView?.image = UIImage(named: "basic-lifecycle")
 
         return cell
     }
 
+    //隐藏状态栏
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     /*
     // Override to support conditional editing of the table view.

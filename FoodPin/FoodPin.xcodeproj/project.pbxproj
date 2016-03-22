@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2785AD3D1CA016850047741A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2785AD3C1CA016850047741A /* CustomTableViewCell.swift */; };
 		27CA0CF31C9ECC8E009159DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA0CF21C9ECC8E009159DB /* AppDelegate.swift */; };
 		27CA0CF81C9ECC8E009159DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CA0CF61C9ECC8E009159DB /* Main.storyboard */; };
 		27CA0CFA1C9ECC8E009159DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27CA0CF91C9ECC8E009159DB /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2785AD3C1CA016850047741A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		27CA0CEF1C9ECC8E009159DB /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CA0CF21C9ECC8E009159DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27CA0CF71C9ECC8E009159DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				27CA0CFB1C9ECC8E009159DB /* LaunchScreen.storyboard */,
 				27CA0CFE1C9ECC8E009159DB /* Info.plist */,
 				27CA0D221C9ECDDE009159DB /* RestaurantTableViewCotroller.swift */,
+				2785AD3C1CA016850047741A /* CustomTableViewCell.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2785AD3D1CA016850047741A /* CustomTableViewCell.swift in Sources */,
 				27CA0CF31C9ECC8E009159DB /* AppDelegate.swift in Sources */,
 				27CA0D231C9ECDDE009159DB /* RestaurantTableViewCotroller.swift in Sources */,
 			);
@@ -487,6 +491,7 @@
 				27CA0D191C9ECC8F009159DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27CA0D1A1C9ECC8F009159DB /* Build configuration list for PBXNativeTarget "FoodPinTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +500,7 @@
 				27CA0D1C1C9ECC8F009159DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27CA0D1D1C9ECC8F009159DB /* Build configuration list for PBXNativeTarget "FoodPinUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +509,7 @@
 				27CA0D1F1C9ECC8F009159DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
