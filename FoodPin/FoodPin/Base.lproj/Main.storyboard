@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Restaurant Table View Cotroller-->
@@ -21,30 +22,63 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbb-FI-Y7t">
-                                            <rect key="frame" x="15" y="10" width="60" height="60"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kbb-FI-Y7t">
+                                            <rect key="frame" x="15" y="18" width="60" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="7K7-dY-sn1"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="餐馆名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lg9-Op-txb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="餐馆名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lg9-Op-txb">
                                             <rect key="frame" x="86" y="9" width="205" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="siZ-me-ZTA"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq1-RO-oBo">
-                                            <rect key="frame" x="86" y="35" width="205" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq1-RO-oBo">
+                                            <rect key="frame" x="86" y="37" width="205" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhC-3e-pV1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhC-3e-pV1">
                                             <rect key="frame" x="86" y="54" width="205" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="205" id="23Z-P8-36K"/>
+                                                <constraint firstAttribute="height" constant="21" id="obV-Mg-cZB"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-wg-sS0" userLabel="favImg">
+                                            <rect key="frame" x="542" y="18" width="30" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="Q9C-F3-P45"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Iq1-RO-oBo" firstAttribute="top" secondItem="lg9-Op-txb" secondAttribute="bottom" constant="7" id="0gF-9P-QbG"/>
+                                        <constraint firstItem="Kbb-FI-Y7t" firstAttribute="leading" secondItem="MOH-Jc-caK" secondAttribute="leadingMargin" constant="7" id="1U3-yg-zr3"/>
+                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="top" secondItem="Iq1-RO-oBo" secondAttribute="bottom" constant="1" id="4ap-LB-SB6"/>
+                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="trailing" secondItem="Iq1-RO-oBo" secondAttribute="trailing" id="7MR-pI-ZSI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="XhC-3e-pV1" secondAttribute="bottom" constant="-3.5" id="Qdy-3t-qvw"/>
+                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="leading" secondItem="Iq1-RO-oBo" secondAttribute="leading" id="VhI-uc-jEs"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7h6-wg-sS0" secondAttribute="bottom" constant="30" id="Xrp-yi-oTY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="7h6-wg-sS0" secondAttribute="trailing" constant="20" id="bvH-KM-gMv"/>
+                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="leading" secondItem="lg9-Op-txb" secondAttribute="leading" id="eOT-m8-ItX"/>
+                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="trailing" secondItem="lg9-Op-txb" secondAttribute="trailing" id="gs9-D3-o3p"/>
+                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="leading" secondItem="Kbb-FI-Y7t" secondAttribute="trailing" constant="11" id="kmq-Mo-ucV"/>
+                                        <constraint firstItem="7h6-wg-sS0" firstAttribute="top" secondItem="Kbb-FI-Y7t" secondAttribute="top" id="lkC-Ti-nIP"/>
+                                        <constraint firstItem="Kbb-FI-Y7t" firstAttribute="centerY" secondItem="MOH-Jc-caK" secondAttribute="centerY" id="tNg-97-Hxb"/>
+                                        <constraint firstItem="7h6-wg-sS0" firstAttribute="top" secondItem="MOH-Jc-caK" secondAttribute="topMargin" constant="10" id="xHL-sx-Dgy"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favImg" destination="7h6-wg-sS0" id="R3Y-4C-8FU"/>
                                     <outlet property="img" destination="Kbb-FI-Y7t" id="tA4-4U-pfH"/>
                                     <outlet property="location" destination="Iq1-RO-oBo" id="Nqr-dT-jSx"/>
                                     <outlet property="name" destination="lg9-Op-txb" id="6l0-6j-OrV"/>

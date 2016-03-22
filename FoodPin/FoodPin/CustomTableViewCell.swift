@@ -14,6 +14,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var favImg: UIImageView!
     
 
     override func awakeFromNib() {

@@ -20,6 +20,10 @@ class RestaurantTableViewCotroller: UITableViewController {
         "会泽","曲靖","宜昌","武汉","长沙","贵阳","成都","重庆","施恩","长阳","陆良","大海草上","呼和浩特"]
     
     var rImg = ["0","1","2","3","4","5","06","07","08","09","010","011","012","013","014","015","016","017","018","019","020","021","022","023","024"]
+
+    
+    //用于报错所有cell的选中状态
+    var status = [Bool](count:21, repeatedValue:false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +62,22 @@ class RestaurantTableViewCotroller: UITableViewController {
         cell.location.text = rLocation[indexPath.row]
         cell.img.image = UIImage(named: rImg[indexPath.row])
         cell.img.layer.cornerRadius = cell.img.frame.size.width / 2 //图片圆角化，正方形内切圆半径为正方形边长一半
+        cell.favImg.image = UIImage(named: "heart")
+        cell.favImg.hidden = status[indexPath.row] ? false : true
+      
         
         cell.img.clipsToBounds = true//图片布局生效
+       
         
-        //cell.textLabel?.text = restaurant[indexPath.row]
-       // cell.imageView?.image = UIImage(named: "basic-lifecycle")
-
+        
+        //修复“一炮双响”
+//        if status[indexPath.row] == true {
+//            cell.accessoryType = .Checkmark
+//        } else {
+//            cell.accessoryType = .None
+//        }
+        //cell.accessoryType = status[indexPath.row] ? .Checkmark : .None
+        
         return cell
     }
 
@@ -90,6 +104,8 @@ class RestaurantTableViewCotroller: UITableViewController {
         let visted = UIAlertAction(title: "我来过", style: .Default) { (_) -> Void in
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            
+            self.status[indexPath.row] = true
         }
         
         optionMenu.addAction(cancelAction)
