@@ -74,10 +74,27 @@ class RestaurantTableViewCotroller: UITableViewController {
     
     //选中行执行的操作
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let optionMenu = UIAlertController(title: "亲，您选择了我", message: "消息", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let optionAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let optionMenu = UIAlertController(title: "亲，您选择了我", message: "消息", preferredStyle: .ActionSheet)
         
-        optionMenu.addAction(optionAction)
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        
+        let callHandler = {(action:UIAlertAction) -> Void in
+            let alert = UIAlertController(title: "提示", message: "您拨打的电话暂时无法接通", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "ok", style: .Default, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        let callAction = UIAlertAction(title: "拨打 021-6532 \(indexPath.row)", style: .Default, handler: callHandler)
+        
+        let visted = UIAlertAction(title: "我来过", style: .Default) { (_) -> Void in
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        
+        optionMenu.addAction(cancelAction)
+        optionMenu.addAction(callAction)
+        optionMenu.addAction(visted)
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
 
