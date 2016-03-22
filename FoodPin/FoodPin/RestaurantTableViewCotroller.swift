@@ -19,6 +19,8 @@ class RestaurantTableViewCotroller: UITableViewController {
     var rLocation = ["上海","北京","杭州","西南","海南","广州","西安","大理","丽江","昆明","西双版纳",
         "会泽","曲靖","宜昌","武汉","长沙","贵阳","成都","重庆","施恩","长阳","陆良","大海草上","呼和浩特"]
     
+    var rImg = ["0","1","2","3","4","5","06","07","08","09","010","011","012","013","014","015","016","017","018","019","020","021","022","023","024"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,7 +56,7 @@ class RestaurantTableViewCotroller: UITableViewController {
         cell.name.text = restaurant[indexPath.row]
         cell.type.text = rType[indexPath.row]
         cell.location.text = rLocation[indexPath.row]
-        cell.img.image = UIImage(named: "basic-lifecycle")
+        cell.img.image = UIImage(named: rImg[indexPath.row])
         cell.img.layer.cornerRadius = cell.img.frame.size.width / 2 //图片圆角化，正方形内切圆半径为正方形边长一半
         
         cell.img.clipsToBounds = true//图片布局生效
@@ -68,6 +70,15 @@ class RestaurantTableViewCotroller: UITableViewController {
     //隐藏状态栏
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    //选中行执行的操作
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let optionMenu = UIAlertController(title: "亲，您选择了我", message: "消息", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let optionAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        optionMenu.addAction(optionAction)
+        self.presentViewController(optionMenu, animated: true, completion: nil)
     }
 
     /*
