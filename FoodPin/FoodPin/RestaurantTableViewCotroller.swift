@@ -23,7 +23,7 @@ class RestaurantTableViewCotroller: UITableViewController {
 
     
     //用于报错所有cell的选中状态
-    var status = [Bool](count:21, repeatedValue:false)
+    var status = [Bool](count:25, repeatedValue:false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,10 +62,6 @@ class RestaurantTableViewCotroller: UITableViewController {
         cell.location.text = rLocation[indexPath.row]
         cell.img.image = UIImage(named: rImg[indexPath.row])
         cell.img.layer.cornerRadius = cell.img.frame.size.width / 2 //图片圆角化，正方形内切圆半径为正方形边长一半
-        cell.favImg.image = UIImage(named: "heart")
-        cell.favImg.hidden = status[indexPath.row] ? false : true
-      
-        
         cell.img.clipsToBounds = true//图片布局生效
        
         
@@ -76,8 +72,10 @@ class RestaurantTableViewCotroller: UITableViewController {
 //        } else {
 //            cell.accessoryType = .None
 //        }
-        //cell.accessoryType = status[indexPath.row] ? .Checkmark : .None
-        
+        cell.accessoryType = status[indexPath.row] ? .Checkmark : .None
+        cell.favImg.image = UIImage(named: "heart")
+        cell.favImg.hidden = status[indexPath.row] ? false : true
+
         return cell
     }
 
@@ -102,9 +100,12 @@ class RestaurantTableViewCotroller: UITableViewController {
         let callAction = UIAlertAction(title: "拨打 021-6532 \(indexPath.row)", style: .Default, handler: callHandler)
         
         let visted = UIAlertAction(title: "我来过", style: .Default) { (_) -> Void in
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+          //  let cell = tableView.cellForRowAtIndexPath(indexPath)
             
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            cell.favImg.hidden = false
+           
             self.status[indexPath.row] = true
         }
         

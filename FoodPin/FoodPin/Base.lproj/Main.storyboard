@@ -19,13 +19,13 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="550-AN-78x" id="MOH-Jc-caK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kbb-FI-Y7t">
-                                            <rect key="frame" x="15" y="18" width="60" height="44"/>
+                                            <rect key="frame" x="15" y="18" width="60" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="7K7-dY-sn1"/>
+                                                <constraint firstAttribute="width" constant="60" id="1ct-R1-O3v"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="餐馆名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lg9-Op-txb">
@@ -54,27 +54,27 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-wg-sS0" userLabel="favImg">
-                                            <rect key="frame" x="542" y="18" width="30" height="24"/>
+                                            <rect key="frame" x="509" y="30" width="30" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="Q9C-F3-P45"/>
+                                                <constraint firstAttribute="width" constant="30" id="qXy-fJ-cZ1"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Iq1-RO-oBo" firstAttribute="top" secondItem="lg9-Op-txb" secondAttribute="bottom" constant="7" id="0gF-9P-QbG"/>
-                                        <constraint firstItem="Kbb-FI-Y7t" firstAttribute="leading" secondItem="MOH-Jc-caK" secondAttribute="leadingMargin" constant="7" id="1U3-yg-zr3"/>
                                         <constraint firstItem="XhC-3e-pV1" firstAttribute="top" secondItem="Iq1-RO-oBo" secondAttribute="bottom" constant="1" id="4ap-LB-SB6"/>
                                         <constraint firstItem="XhC-3e-pV1" firstAttribute="trailing" secondItem="Iq1-RO-oBo" secondAttribute="trailing" id="7MR-pI-ZSI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Kbb-FI-Y7t" secondAttribute="bottom" constant="-6.5" id="8bp-QJ-Xot"/>
+                                        <constraint firstItem="Kbb-FI-Y7t" firstAttribute="leading" secondItem="MOH-Jc-caK" secondAttribute="leadingMargin" constant="7" id="Alv-V9-vB0"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="XhC-3e-pV1" secondAttribute="bottom" constant="-3.5" id="Qdy-3t-qvw"/>
+                                        <constraint firstAttribute="bottom" secondItem="7h6-wg-sS0" secondAttribute="bottom" constant="20" id="Tnr-Vf-5sg"/>
+                                        <constraint firstAttribute="trailing" secondItem="7h6-wg-sS0" secondAttribute="trailing" constant="61" id="VFS-Ze-3wi"/>
                                         <constraint firstItem="XhC-3e-pV1" firstAttribute="leading" secondItem="Iq1-RO-oBo" secondAttribute="leading" id="VhI-uc-jEs"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="7h6-wg-sS0" secondAttribute="bottom" constant="30" id="Xrp-yi-oTY"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="7h6-wg-sS0" secondAttribute="trailing" constant="20" id="bvH-KM-gMv"/>
                                         <constraint firstItem="XhC-3e-pV1" firstAttribute="leading" secondItem="lg9-Op-txb" secondAttribute="leading" id="eOT-m8-ItX"/>
                                         <constraint firstItem="XhC-3e-pV1" firstAttribute="trailing" secondItem="lg9-Op-txb" secondAttribute="trailing" id="gs9-D3-o3p"/>
-                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="leading" secondItem="Kbb-FI-Y7t" secondAttribute="trailing" constant="11" id="kmq-Mo-ucV"/>
-                                        <constraint firstItem="7h6-wg-sS0" firstAttribute="top" secondItem="Kbb-FI-Y7t" secondAttribute="top" id="lkC-Ti-nIP"/>
-                                        <constraint firstItem="Kbb-FI-Y7t" firstAttribute="centerY" secondItem="MOH-Jc-caK" secondAttribute="centerY" id="tNg-97-Hxb"/>
-                                        <constraint firstItem="7h6-wg-sS0" firstAttribute="top" secondItem="MOH-Jc-caK" secondAttribute="topMargin" constant="10" id="xHL-sx-Dgy"/>
+                                        <constraint firstItem="7h6-wg-sS0" firstAttribute="top" secondItem="MOH-Jc-caK" secondAttribute="top" constant="30" id="xmo-qx-PTW"/>
+                                        <constraint firstItem="XhC-3e-pV1" firstAttribute="leading" secondItem="Kbb-FI-Y7t" secondAttribute="trailing" constant="11" id="yOn-yI-p6b"/>
+                                        <constraint firstItem="Kbb-FI-Y7t" firstAttribute="top" secondItem="MOH-Jc-caK" secondAttribute="topMargin" constant="10" id="zLe-Wt-VUQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
