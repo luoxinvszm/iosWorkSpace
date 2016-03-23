@@ -114,6 +114,8 @@ class RestaurantTableViewCotroller: UITableViewController {
         optionMenu.addAction(visted)
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -123,17 +125,51 @@ class RestaurantTableViewCotroller: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
+    
+    // Override to support editing the table view.滑动操作单元格
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            restaurant.removeAtIndex(indexPath.row)
+            rType.removeAtIndex(indexPath.row)
+            rImg.removeAtIndex(indexPath.row)
+            rLocation.removeAtIndex(indexPath.row)
+            status.removeAtIndex(indexPath.row)
+            //tableView.reloadData()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//删除行，并有滑动效果
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    //实现该方法后，系统将不再提供滑动删除
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let shareAction = UITableViewRowAction(style: .Default, title: "分享") { (action, indexPath) -> Void in
+            let alert = UIAlertController(title: "分享到", message: "请选择你要分享到的社交类型", preferredStyle: .ActionSheet)
+            
+            let qqAction = UIAlertAction(title: "QQ", style: .Default, handler: nil)
+            let sinaAction = UIAlertAction(title: "新浪微博", style: .Default, handler: nil)
+            let weChatAction = UIAlertAction(title: "微信", style: .Default, handler: nil)
+            
+            alert.addAction(qqAction)
+            alert.addAction(sinaAction)
+            alert.addAction(weChatAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        shareAction.backgroundColor = UIColor(red: 218/255, green: 225/255, blue: 218/255, alpha: 0.7)
+        
+        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") { (action, indexPath) -> Void in
+            self.restaurant.removeAtIndex(indexPath.row)
+            self.rType.removeAtIndex(indexPath.row)
+            self.rImg.removeAtIndex(indexPath.row)
+            self.rLocation.removeAtIndex(indexPath.row)
+            self.status.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//删除行，并有滑动效果
+        }
+        return [shareAction,deleteAction]
+    }
+
 
     /*
     // Override to support rearranging the table view.
