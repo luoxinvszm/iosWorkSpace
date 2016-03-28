@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--吃货点评-->
@@ -83,7 +84,7 @@
                                     <outlet property="location" destination="Iq1-RO-oBo" id="Nqr-dT-jSx"/>
                                     <outlet property="name" destination="lg9-Op-txb" id="6l0-6j-OrV"/>
                                     <outlet property="type" destination="XhC-3e-pV1" id="Cew-gp-Pen"/>
-                                    <segue destination="A2K-7R-k1a" kind="show" identifier="showRestaurantDetail" id="C1w-dJ-CLl"/>
+                                    <segue destination="hLP-GM-WlU" kind="show" identifier="showRestaurantDetail" id="V1I-lc-VGh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -166,12 +167,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tN4-q7-55A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872" y="152"/>
+            <point key="canvasLocation" x="1923" y="-163"/>
+        </scene>
+        <!--Detail Table View Controller-->
+        <scene sceneID="Ox3-jp-kd4">
+            <objects>
+                <tableViewController id="hLP-GM-WlU" customClass="DetailTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ugu-MY-xmd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="011" id="Bud-g8-HUw">
+                            <rect key="frame" x="0.0" y="64" width="600" height="300"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="36" id="PPc-rE-cr9" customClass="DetailTableViewCell" customModule="FoodPin" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="392" width="600" height="36"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PPc-rE-cr9" id="OkW-rg-bu1">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="35.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4Y-oq-YeH">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="21"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="251" misplaced="YES" text="字段" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAg-3V-r8L">
+                                                    <rect key="frame" x="0.0" y="0.0" width="195" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6U-VI-xnm">
+                                                    <rect key="frame" x="195" y="0.0" width="390" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oAg-3V-r8L" firstAttribute="width" secondItem="k6U-VI-xnm" secondAttribute="width" multiplier="0.5" id="PUm-N1-jnV"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="f4Y-oq-YeH" secondAttribute="leading" id="B0L-BR-ru7"/>
+                                        <constraint firstItem="f4Y-oq-YeH" firstAttribute="centerY" secondItem="OkW-rg-bu1" secondAttribute="centerY" id="g2R-PE-BKg"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="f4Y-oq-YeH" secondAttribute="trailing" id="rbZ-7A-3pd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="fieldLabel" destination="oAg-3V-r8L" id="vrK-ls-u9W"/>
+                                    <outlet property="valueLabel" destination="k6U-VI-xnm" id="IiD-o4-g6O"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hLP-GM-WlU" id="d1I-9Q-Twb"/>
+                            <outlet property="delegate" destination="hLP-GM-WlU" id="9Q5-3V-QlE"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="imageView" destination="Bud-g8-HUw" id="iIK-vS-ORc"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGk-X3-asx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864" y="824"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vbr-F2-2aa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CXZ-mM-NMj" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="CXZ-mM-NMj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u8q-sv-301">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -187,4 +254,7 @@
             <point key="canvasLocation" x="390" y="157"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="011" width="853" height="533"/>
+    </resources>
 </document>

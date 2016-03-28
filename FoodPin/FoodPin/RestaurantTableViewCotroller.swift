@@ -55,12 +55,14 @@ class RestaurantTableViewCotroller: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //将导航返回按钮设置为仅有箭头
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,7 +111,7 @@ class RestaurantTableViewCotroller: UITableViewController {
 
     //隐藏状态栏
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        return false
     }
     
     //选中行执行的操作
@@ -214,13 +216,10 @@ class RestaurantTableViewCotroller: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showRestaurantDetail" {
-            let destVC = segue.destinationViewController as! RestaurantDetailsViewController
+            let destVC = segue.destinationViewController as! DetailTableViewController
             
             let position = tableView.indexPathForSelectedRow!.row
-            destVC.restaurantImage = restaurants[position].image
-            destVC.restaurantName = restaurants[position].name
-            destVC.restaurantType = restaurants[position].type
-            destVC.restaurantLocation = restaurants[position].location
+            destVC.restaurant = restaurants[position]
             
         }
         

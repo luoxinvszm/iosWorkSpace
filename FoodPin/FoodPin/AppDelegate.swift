@@ -16,6 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        //更改导航条颜色
+        UINavigationBar.appearance().barTintColor = UIColor(red: 242/255, green: 116/255, blue: 119/255, alpha: 1)
+        //更改导航按钮颜色
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        //更改导航按钮字体
+        if let font = UIFont(name: "Avenir-Light", size: 24.0) {
+            UINavigationBar.appearance().titleTextAttributes = [
+                NSForegroundColorAttributeName:UIColor.whiteColor(),
+                NSFontAttributeName:font
+                
+            ]
+        }
+        //全局设置状态条背景
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         return true
     }
 
