@@ -25,11 +25,11 @@ class RestaurantTableViewCotroller: UITableViewController {
 //    //用于保存所有cell的选中状态
 //    var status = [Bool](count:25, repeatedValue:false)
     var restaurants = [
-        Restaurant(name:"咖啡胡同",type:"西餐",location:"上海",image:"0",isVisited:false) ,
-        Restaurant(name:"霍米",type:"西餐",location:"北京",image:"1",isVisited:false) ,
-        Restaurant(name:"茶。家",type:"中餐",location:"杭州",image:"2",isVisited:false) ,
-        Restaurant(name:"洛伊斯咖啡",type:"西餐",location:"西南",image:"3",isVisited:false) ,
-        Restaurant(name:"贝蒂生蚝",type:"海鲜",location:"海南",image:"4",isVisited:false) ,
+        Restaurant(name:"咖啡胡同",type:"西餐",location:"中国上海市浦东新区陆家嘴商务广场2301室刷卡机贷款及按实际的卡上的了空间",image:"0",isVisited:false) ,
+        Restaurant(name:"霍米",type:"西餐",location:"中国北京市西城区西直门52号",image:"1",isVisited:false) ,
+        Restaurant(name:"茶。家",type:"中餐",location:"中国江苏省杭州市西湖区西湖路1233号",image:"2",isVisited:false) ,
+        Restaurant(name:"洛伊斯咖啡",type:"西餐",location:"中国四川省成都市高新区宽窄巷子2322号",image:"3",isVisited:false) ,
+        Restaurant(name:"贝蒂生蚝",type:"海鲜",location:"中国海南省三亚市亚龙湾90号红树林酒店122室",image:"4",isVisited:false) ,
         Restaurant(name:"福奇餐馆",type:"广式",location:"广州",image:"5",isVisited:false) ,
         Restaurant(name:"阿波画室",type:"休闲",location:"西安",image:"06",isVisited:false) ,
         Restaurant(name:"小碗大胃",type:"中餐",location:"大理",image:"07",isVisited:false) ,
@@ -48,7 +48,7 @@ class RestaurantTableViewCotroller: UITableViewController {
         Restaurant(name:"巴拉菲娜",type:"西餐",location:"长阳",image:"020",isVisited:false) ,
         Restaurant(name:"多尼西亚",type:"西餐",location:"陆良",image:"021",isVisited:false) ,
         Restaurant(name:"皇家橡树",type:"中餐",location:"大海草上",image:"022",isVisited:false) ,
-        Restaurant(name:"秦咖啡",type:"饮品",location:"呼和浩特",image:"023",isVisited:false) ,
+        Restaurant(name:"秦咖啡",type:"饮品",location:"中国内蒙古自治区呼和浩特市西撒搜我阿斯兰的空间",image:"023",isVisited:false) ,
 
     ]
     
@@ -63,6 +63,12 @@ class RestaurantTableViewCotroller: UITableViewController {
         
         //将导航返回按钮设置为仅有箭头
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        //若要使单元格自适应，需要设置期望行高并设置行高为 UITableViewAutomaticDimension
+        //并需要将需要自适应的内容相对于其父容器的边距（顶边和底边）设置为0
+        //还要将其设置为非固定行数（即，设置其lines属性为0）
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {

@@ -27,6 +27,12 @@ class DetailTableViewController: UITableViewController {
         
         //指定试图标题
         title = restaurant.name
+        
+        //若要使单元格自适应，需要设置期望行高并设置行高为 UITableViewAutomaticDimension
+        //并需要将需要自适应的内容相对于其父容器的边距（顶边和底边）设置为0
+        //还要将其设置为非固定行数（即，设置其lines属性为0）
+        tableView.estimatedRowHeight = 36
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
 //    override func viewDidAppear(animated: Bool) {
