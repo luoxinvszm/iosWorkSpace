@@ -67,7 +67,7 @@ class RestaurantTableViewCotroller: UITableViewController {
         //若要使单元格自适应，需要设置期望行高并设置行高为 UITableViewAutomaticDimension
         //并需要将需要自适应的内容相对于其父容器的边距（顶边和底边）设置为0
         //还要将其设置为非固定行数（即，设置其lines属性为0）
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 20
         tableView.rowHeight = UITableViewAutomaticDimension
     }
 
@@ -191,11 +191,19 @@ class RestaurantTableViewCotroller: UITableViewController {
         
         shareAction.backgroundColor = UIColor(red: 218/255, green: 225/255, blue: 218/255, alpha: 0.7)
         
-        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") { (action, indexPath) -> Void in
-            self.restaurants.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//删除行，并有滑动效果
+//        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") { (action, indexPath) -> Void in
+//            self.restaurants.removeAtIndex(indexPath.row)
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//删除行，并有滑动效果
+//        }
+//        return [shareAction,deleteAction]
+        let favAction = UITableViewRowAction(style: .Default, title: "收藏") { (action, indexPath) -> Void in
+             let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
+             cell.favImg.hidden = false
+             self.restaurants[indexPath.row].isVisited = true
         }
-        return [shareAction,deleteAction]
+        
+        favAction.backgroundColor = UIColor(red: 253/255, green: 165/255, blue: 66/255, alpha: 0.7)
+        return [shareAction,favAction]
     }
 
 
