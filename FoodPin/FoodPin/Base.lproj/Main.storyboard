@@ -111,16 +111,21 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="011" translatesAutoresizingMaskIntoConstraints="NO" id="Bud-g8-HUw">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAI-U3-PcE">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAI-U3-PcE">
                                     <rect key="frame" x="525" y="25" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="5ak-LE-UD2"/>
                                         <constraint firstAttribute="height" constant="50" id="zhG-0L-YLR"/>
                                     </constraints>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" image="rating"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.conerRadio">
+                                            <integer key="value" value="0"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <segue destination="2q1-af-97U" kind="presentation" id="pza-lA-YDy"/>
+                                        <segue destination="2q1-af-97U" kind="presentation" identifier="showReview" id="pza-lA-YDy"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -184,16 +189,17 @@
                     </tableView>
                     <connections>
                         <outlet property="imageView" destination="Bud-g8-HUw" id="iIK-vS-ORc"/>
+                        <outlet property="ratingBtg" destination="FAI-U3-PcE" id="VMk-0S-RUn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGk-X3-asx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1932" y="157"/>
         </scene>
-        <!--View Controller-->
+        <!--Review View Controller-->
         <scene sceneID="R62-yK-XGy">
             <objects>
-                <viewController id="2q1-af-97U" sceneMemberID="viewController">
+                <viewController id="2q1-af-97U" customClass="ReviewViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Ym-AC-A1g"/>
                         <viewControllerLayoutGuide type="bottom" id="D3q-H4-W3A"/>
@@ -214,41 +220,54 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Nm-vD-QOC">
                                 <rect key="frame" x="185" y="189" width="230" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLk-vC-dVg">
+                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLk-vC-dVg">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="GWS-Or-TXI"/>
                                             <constraint firstAttribute="width" constant="70" id="ofL-Zn-CZ3"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="dislike"/>
+                                        <connections>
+                                            <action selector="ratingTappedAction:" destination="2q1-af-97U" eventType="touchUpInside" id="12c-yA-CSX"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrC-hh-Ve2">
+                                    <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrC-hh-Ve2">
                                         <rect key="frame" x="80" y="0.0" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="0Gh-ow-x5F"/>
                                             <constraint firstAttribute="width" constant="70" id="vcA-y8-KnC"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="good"/>
+                                        <connections>
+                                            <action selector="ratingTappedAction:" destination="2q1-af-97U" eventType="touchUpInside" id="bam-AL-Z1x"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isR-ME-lus">
+                                    <button opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isR-ME-lus">
                                         <rect key="frame" x="160" y="0.0" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="8z4-53-1Mk"/>
                                             <constraint firstAttribute="width" constant="70" id="XRA-bg-WoN"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="great"/>
+                                        <connections>
+                                            <action selector="ratingTappedAction:" destination="2q1-af-97U" eventType="touchUpInside" id="Yc2-OK-ZkK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ke-mT-dOR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ke-mT-dOR">
                                 <rect key="frame" x="560" y="30" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="rJw-4x-wne"/>
                                     <constraint firstAttribute="width" constant="30" id="yco-OO-9qp"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="close"/>
                                 <connections>
-                                    <segue destination="adi-bR-G5M" kind="unwind" unwindAction="close:" id="DvI-xw-B7j"/>
+                                    <segue destination="adi-bR-G5M" kind="unwind" identifier="unwindToDetailView" unwindAction="close:" id="DvI-xw-B7j"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -266,6 +285,10 @@
                             <constraint firstItem="D3q-H4-W3A" firstAttribute="top" secondItem="4uK-3G-dp3" secondAttribute="bottom" id="oaI-Fv-dh2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bgImageView" destination="4uK-3G-dp3" id="pSa-LH-R8v"/>
+                        <outlet property="btStackView" destination="1Nm-vD-QOC" id="0Lg-gF-piv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPW-C5-TVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="adi-bR-G5M" userLabel="Exit" sceneMemberID="exit"/>

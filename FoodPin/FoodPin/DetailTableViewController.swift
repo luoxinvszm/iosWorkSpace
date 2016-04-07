@@ -13,6 +13,8 @@ class DetailTableViewController: UITableViewController {
     
     var restaurant: Restaurant!
     
+    @IBOutlet weak var ratingBtg: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,7 +83,25 @@ class DetailTableViewController: UITableViewController {
     
     //反向转场的方法
     @IBAction func close(segue: UIStoryboardSegue){
+        if let reviewVC = segue.sourceViewController as? ReviewViewController {
+            if let rating = reviewVC.rating {
+                self.restaurant.rating = rating
+                self.ratingBtg.setImage(UIImage(named:rating), forState: .Normal)
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "showReview" {
+            let destVC = segue.destinationViewController as! ReviewViewController
+            
+            destVC.imgName = restaurant.image
+            
+        }
         
     }
+    
     
 }
