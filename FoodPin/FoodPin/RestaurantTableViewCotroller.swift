@@ -108,7 +108,7 @@ class RestaurantTableViewCotroller: UITableViewController {
 //        } else {
 //            cell.accessoryType = .None
 //        }
-        cell.accessoryType = restaurants[indexPath.row].isVisited ? .Checkmark : .None
+//      cell.accessoryType = restaurants[indexPath.row].isVisited ? .Checkmark : .None
         cell.favImg.image = UIImage(named: "heart")
         cell.favImg.hidden = restaurants[indexPath.row].isVisited ? false : true
 

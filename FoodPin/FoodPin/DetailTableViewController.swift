@@ -79,4 +79,9 @@ class DetailTableViewController: UITableViewController {
         return cell
     }
     
+    //反向转场的方法
+    @IBAction func close(segue: UIStoryboardSegue){
+        
+    }
+    
 }
