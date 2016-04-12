@@ -101,6 +101,12 @@ class DetailTableViewController: UITableViewController {
             
         }
         
+        if segue.identifier == "showMap" {
+            let destVC = segue.destinationViewController as! MapViewController
+            
+            destVC.restaurant = self.restaurant
+        }
+        
     }
     
     
