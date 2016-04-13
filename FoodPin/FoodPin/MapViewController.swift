@@ -18,6 +18,13 @@ class MapViewController: UIViewController,MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mapView.showsTraffic = true //显示交通线
+        mapView.showsUserLocation = true //显示用户坐标
+        mapView.showsCompass = true //显示指南针
+        mapView.showsScale = true //显示比例尺
+        mapView.showsBuildings = true // 显示建筑
+        
+        
         let geoCoder = CLGeocoder()//经纬度解析（根据地址解析为经纬度）
         geoCoder.geocodeAddressString(restaurant.location){ (placemarks,error) -> Void in
             if error != nil {
