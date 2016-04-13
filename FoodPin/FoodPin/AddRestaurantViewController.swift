@@ -18,7 +18,7 @@ class AddRestaurantViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var rAddr: UITextField!
     
     @IBAction func saveButtonAction(sender: UIBarButtonItem) {
-      
+        //校验格字段是否为空
     }
     override func viewDidLoad() {
         super.viewDidLoad()
