@@ -24,33 +24,35 @@ class RestaurantTableViewCotroller: UITableViewController {
 //    
 //    //用于保存所有cell的选中状态
 //    var status = [Bool](count:25, repeatedValue:false)
-    var restaurants = [
-        Restaurant(name:"咖啡胡同",type:"西餐",location:"中国上海市浦东新区1600号陆家嘴商务广场2301室",image:"0",isVisited:false) ,
-        Restaurant(name:"霍米",type:"西餐",location:"香港上环德辅道西78号G/F",image:"1",isVisited:false) ,
-        Restaurant(name:"茶。家",type:"中餐",location:"香港上环文咸东街太平山22-24A，B店",image:"2",isVisited:false) ,
-        Restaurant(name:"洛伊斯咖啡",type:"西餐",location:"香港葵涌和宜合道熟食市场地下",image:"3",isVisited:false) ,
-        Restaurant(name:"贝蒂生蚝",type:"海鲜",location:"香港新界葵涌屏富径",image:"4",isVisited:false) ,
-        Restaurant(name:"福奇餐馆",type:"广式",location:"香港九龙尖沙咀河内道18号(近港铁尖东站N3,N4出口)",image:"5",isVisited:false) ,
-        Restaurant(name:"阿波画室",type:"休闲",location:"香港岛中环都爹利街13号乐成行地库中层",image:"06",isVisited:false) ,
-        Restaurant(name:"小碗大胃",type:"中餐",location:"香港岛铜锣湾轩尼诗道555号崇光百货地库2楼30号铺",image:"07",isVisited:false) ,
-        Restaurant(name:"虾吃虾涮",type:"火锅",location:"4 Hickson Rd、The Rocks NSW 2000",image:"08",isVisited:false) ,
-        Restaurant(name:"福厨",type:"中餐",location:"31 Wheat Rd、Sydney NSW 2001",image:"09",isVisited:false) ,
-        Restaurant(name:"纸上烤鱼",type:"烧烤",location:"1/11-31 York Street Sydney NSW Australia、Sydney NSW 2000",image:"010",isVisited:false) ,
-        Restaurant(name:"伯克街面包坊",type:"糕点",location:"Macy's、151 W 34th St Fifth Floor、New York, NY 10001",image:"011",isVisited:false) ,
-        Restaurant(name:"嘉华饼屋",type:"糕点",location:"250 8th Ave、New York, NY 10107",image:"012",isVisited:false) ,
-        Restaurant(name:"黑氏巧克力",type:"零食",location:"55-1 Riverwalk Pl、West New York, NJ 07093",image:"013",isVisited:false) ,
-        Restaurant(name:"惠灵顿雪梨",type:"水果",location:"1585 Broadway、New York, NY 10036-8200",image:"014",isVisited:false) ,
-        Restaurant(name:"布鲁克林塔菲",type:"西餐",location:"1460 Broadway、New York, NY 10036",image:"015",isVisited:false) ,
-        Restaurant(name:"格雷厄姆大街肉",type:"烤肉",location:"250 8th Ave、New York, NY 10107",image:"016",isVisited:false) ,
-        Restaurant(name:"华夫饼 & 沃夫",type:"面包",location:"822 Lexington Ave、New York, NY 10065",image:"017",isVisited:false) ,
-        Restaurant(name:"眼光咖啡",type:"饮品",location:"Unit 2, Eldon Chambers、30-32 Fleet St、London EC4Y 1AA",image:"018",isVisited:false) ,
-        Restaurant(name:"震颤酒吧",type:"休闲",location:"Waterloo Station、London SE1 7LY",image:"019",isVisited:false) ,
-        Restaurant(name:"巴拉菲娜",type:"西餐",location:"Unit 4a、44-58 Brompton Rd、London SW3 1BW",image:"020",isVisited:false) ,
-        Restaurant(name:"多尼西亚",type:"西餐",location:"7-9 Golders Green Rd、London NW11 8DY",image:"021",isVisited:false) ,
-        Restaurant(name:"皇家橡树",type:"中餐",location:"7-8 Golders Green Rd、London NW11 8DY",image:"022",isVisited:false) ,
-        Restaurant(name:"秦咖啡",type:"饮品",location:"Unit 2, Eldon Chambers、30-32 Fleet St、London EC4Y 1AA",image:"023",isVisited:false) ,
-
-    ]
+//    var restaurants = [
+//        Restaurant(name:"咖啡胡同",type:"西餐",location:"中国上海市浦东新区1600号陆家嘴商务广场2301室",image:"0",isVisited:false) ,
+//        Restaurant(name:"霍米",type:"西餐",location:"香港上环德辅道西78号G/F",image:"1",isVisited:false) ,
+//        Restaurant(name:"茶。家",type:"中餐",location:"香港上环文咸东街太平山22-24A，B店",image:"2",isVisited:false) ,
+//        Restaurant(name:"洛伊斯咖啡",type:"西餐",location:"香港葵涌和宜合道熟食市场地下",image:"3",isVisited:false) ,
+//        Restaurant(name:"贝蒂生蚝",type:"海鲜",location:"香港新界葵涌屏富径",image:"4",isVisited:false) ,
+//        Restaurant(name:"福奇餐馆",type:"广式",location:"香港九龙尖沙咀河内道18号(近港铁尖东站N3,N4出口)",image:"5",isVisited:false) ,
+//        Restaurant(name:"阿波画室",type:"休闲",location:"香港岛中环都爹利街13号乐成行地库中层",image:"06",isVisited:false) ,
+//        Restaurant(name:"小碗大胃",type:"中餐",location:"香港岛铜锣湾轩尼诗道555号崇光百货地库2楼30号铺",image:"07",isVisited:false) ,
+//        Restaurant(name:"虾吃虾涮",type:"火锅",location:"4 Hickson Rd、The Rocks NSW 2000",image:"08",isVisited:false) ,
+//        Restaurant(name:"福厨",type:"中餐",location:"31 Wheat Rd、Sydney NSW 2001",image:"09",isVisited:false) ,
+//        Restaurant(name:"纸上烤鱼",type:"烧烤",location:"1/11-31 York Street Sydney NSW Australia、Sydney NSW 2000",image:"010",isVisited:false) ,
+//        Restaurant(name:"伯克街面包坊",type:"糕点",location:"Macy's、151 W 34th St Fifth Floor、New York, NY 10001",image:"011",isVisited:false) ,
+//        Restaurant(name:"嘉华饼屋",type:"糕点",location:"250 8th Ave、New York, NY 10107",image:"012",isVisited:false) ,
+//        Restaurant(name:"黑氏巧克力",type:"零食",location:"55-1 Riverwalk Pl、West New York, NJ 07093",image:"013",isVisited:false) ,
+//        Restaurant(name:"惠灵顿雪梨",type:"水果",location:"1585 Broadway、New York, NY 10036-8200",image:"014",isVisited:false) ,
+//        Restaurant(name:"布鲁克林塔菲",type:"西餐",location:"1460 Broadway、New York, NY 10036",image:"015",isVisited:false) ,
+//        Restaurant(name:"格雷厄姆大街肉",type:"烤肉",location:"250 8th Ave、New York, NY 10107",image:"016",isVisited:false) ,
+//        Restaurant(name:"华夫饼 & 沃夫",type:"面包",location:"822 Lexington Ave、New York, NY 10065",image:"017",isVisited:false) ,
+//        Restaurant(name:"眼光咖啡",type:"饮品",location:"Unit 2, Eldon Chambers、30-32 Fleet St、London EC4Y 1AA",image:"018",isVisited:false) ,
+//        Restaurant(name:"震颤酒吧",type:"休闲",location:"Waterloo Station、London SE1 7LY",image:"019",isVisited:false) ,
+//        Restaurant(name:"巴拉菲娜",type:"西餐",location:"Unit 4a、44-58 Brompton Rd、London SW3 1BW",image:"020",isVisited:false) ,
+//        Restaurant(name:"多尼西亚",type:"西餐",location:"7-9 Golders Green Rd、London NW11 8DY",image:"021",isVisited:false) ,
+//        Restaurant(name:"皇家橡树",type:"中餐",location:"7-8 Golders Green Rd、London NW11 8DY",image:"022",isVisited:false) ,
+//        Restaurant(name:"秦咖啡",type:"饮品",location:"Unit 2, Eldon Chambers、30-32 Fleet St、London EC4Y 1AA",image:"023",isVisited:false) ,
+//
+//    ]
+    
+    var restaurants:[Restaurant] = []
     
     
     override func viewDidLoad() {
@@ -96,7 +98,7 @@ class RestaurantTableViewCotroller: UITableViewController {
         cell.name.text = restaurants[indexPath.row].name
         cell.type.text = restaurants[indexPath.row].type
         cell.location.text = restaurants[indexPath.row].location
-        cell.img.image = UIImage(named: restaurants[indexPath.row].image)
+        cell.img.image = UIImage(data: restaurants[indexPath.row].image!)
         cell.img.layer.cornerRadius = cell.img.frame.size.width / 2 //图片圆角化，正方形内切圆半径为正方形边长一半
         cell.img.clipsToBounds = true//图片布局生效
        
@@ -110,7 +112,7 @@ class RestaurantTableViewCotroller: UITableViewController {
 //        }
 //      cell.accessoryType = restaurants[indexPath.row].isVisited ? .Checkmark : .None
         cell.favImg.image = UIImage(named: "heart")
-        cell.favImg.hidden = restaurants[indexPath.row].isVisited ? false : true
+        cell.favImg.hidden = restaurants[indexPath.row].isVisited.boolValue ? false : true
 
         return cell
     }

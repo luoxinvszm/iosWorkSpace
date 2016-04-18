@@ -66,7 +66,7 @@ class MapViewController: UIViewController,MKMapViewDelegate {
         }
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
-        imageView.image = UIImage(named: restaurant.image)
+        imageView.image = UIImage(data: restaurant.image!)
         
         annotionView!.leftCalloutAccessoryView = imageView
         annotionView?.pinTintColor = UIColor.greenColor()

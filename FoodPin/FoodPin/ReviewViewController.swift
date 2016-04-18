@@ -11,7 +11,7 @@ import UIKit
 class ReviewViewController: UIViewController {
 
     var rating:String?
-    var imgName:String=""
+    var imgName:NSData?
     
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var btStackView: UIStackView!
@@ -40,7 +40,7 @@ class ReviewViewController: UIViewController {
         let effectView = UIVisualEffectView(effect: blurEffect)
         
         effectView.frame = view.frame
-        bgImageView.image = UIImage(named: imgName)
+        bgImageView.image = UIImage(data: imgName!)
         bgImageView.addSubview(effectView)
         
         //给stackView添加动画,加载时隐藏stackView

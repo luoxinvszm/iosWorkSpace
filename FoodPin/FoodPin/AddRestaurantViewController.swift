@@ -7,19 +7,55 @@
 //
 
 import UIKit
+import CoreData
 
 //与相册互动需要遵从：UIImagePickerControllerDelegate, UINavigationControllerDelegate
 class AddRestaurantViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var restaurant:Restaurant?
+    var isVisited = false
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var rImage: UIImageView!
     @IBOutlet weak var rName: UITextField!
     @IBOutlet weak var rType: UITextField!
     @IBOutlet weak var rAddr: UITextField!
+    @IBOutlet weak var rIsvisited: UILabel!
     
     @IBAction func saveButtonAction(sender: UIBarButtonItem) {
         //校验格字段是否为空
+        let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+        
+        let restaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: buffer!) as! Restaurant
+        
+        restaurant.name = rName.text!
+        restaurant.type = rType.text!
+        restaurant.location = rAddr.text!
+        
+        if let image = rImage.image {
+            //存储为NSData类型的图片（png类型）
+            restaurant.image = UIImagePNGRepresentation(image)
+        }
+        restaurant.isVisited = isVisited//NSNumber类型与数字和布尔类型自动转换
+        
+        do {
+            try buffer?.save()
+        }catch {
+            print(error)
+        }
+        performSegueWithIdentifier("unwindToHomeList", sender: sender)
     }
+    
+    @IBAction func isVisitedBtnTapped(sender: AnyObject) {
+        if sender.tag == 8001{
+            isVisited = true
+            rIsvisited.text = "我来过了"
+        }else{
+            isVisited = false
+            rIsvisited.text = "没来过"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

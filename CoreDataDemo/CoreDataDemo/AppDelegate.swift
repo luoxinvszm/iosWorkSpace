@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  FoodPin
+//  CoreDataDemo
 //
-//  Created by King Luo on 3/20/16.
+//  Created by King Luo on 4/14/16.
 //  Copyright © 2016 King Luo. All rights reserved.
 //
 
@@ -17,20 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        //更改导航条颜色
-        UINavigationBar.appearance().barTintColor = UIColor(red: 60/255, green: 123/255, blue: 251/255, alpha: 0.7)
-        //更改导航按钮颜色
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        //更改导航按钮字体
-        if let font = UIFont(name: "Avenir-Light", size: 24.0) {
-            UINavigationBar.appearance().titleTextAttributes = [
-                NSForegroundColorAttributeName:UIColor.whiteColor(),
-                NSFontAttributeName:font
-                
-            ]
-        }
-        //全局设置状态条背景
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
         return true
     }
 
@@ -54,33 +40,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
+        self.saveContext()
     }
 
     // MARK: - Core Data stack
-    
+
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.luoxin.FoodPin" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.luoxin.CoreDataDemo" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
-    
-    //Managed Object Model:
-    //托管对象模型，描述数据库建模方案（schema）。
-    //Xcode中用.xcdatamodelId文件，可视化定义数据实体（entity）及其属性关系
+
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        //为此app建立的托管对象模型，此属性为非可选
-        let modelURL = NSBundle.mainBundle().URLForResource("FoodPin", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("CoreDataDemo", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
-    
-    //Persistent Store Coordinator
-    //持久化协调器，用于管理底层数据库间的协调，iOS默认是SQLite，默认即可
+
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("FoodPin.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
@@ -89,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var dict = [String: AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            
+
             dict[NSUnderlyingErrorKey] = error as NSError
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
@@ -100,10 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return coordinator
     }()
-    
-    //Managed Object Context:
-    //托管对象缓冲区，用于管理各个对象，在Core Data框架和数据库框架间进行交互。
-    //比如从数据库中取数据，保存数据到数据库是最常见的交互
+
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
@@ -111,9 +90,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
-    
+
     // MARK: - Core Data Saving support
-    
+
     func saveContext () {
         if managedObjectContext.hasChanges {
             do {

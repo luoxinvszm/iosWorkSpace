@@ -24,7 +24,7 @@ class RestaurantDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantImageView.image = UIImage(data: restaurant.image!)
         rName.text = restaurant.name
         rLocation.text = restaurant.location
         rType.text = restaurant.type
