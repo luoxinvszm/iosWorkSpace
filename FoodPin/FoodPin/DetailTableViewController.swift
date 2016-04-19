@@ -20,6 +20,9 @@ class DetailTableViewController: UITableViewController {
         
         imageView.image = UIImage(data: restaurant.image!)
         
+        if let _rating = restaurant.rating {
+            ratingBtg.setImage(UIImage(named:_rating), forState: .Normal)
+        }
         //更改表格背景色
         tableView.backgroundColor = UIColor(white: 0.98, alpha: 1)
         
@@ -87,6 +90,15 @@ class DetailTableViewController: UITableViewController {
             if let rating = reviewVC.rating {
                 self.restaurant.rating = rating
                 self.ratingBtg.setImage(UIImage(named:rating), forState: .Normal)
+                
+                //数据对象有改动的话，直接调用save保存更改
+                let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+                
+                do {
+                    try buffer?.save()
+                }catch{
+                    print(error)
+                }
             }
         }
     }

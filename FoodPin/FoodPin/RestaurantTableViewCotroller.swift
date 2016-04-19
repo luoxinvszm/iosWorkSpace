@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
-class RestaurantTableViewCotroller: UITableViewController {
+//NSFetchedResultsControllerDelegate 用于处理CoreData在tableView上的操作，提供数据变化时通知其代理的方法
+class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsControllerDelegate {
 
 //    var restaurant = ["咖啡胡同","霍米","茶。家","洛伊斯咖啡","贝蒂生蚝","福奇餐馆","阿波画室","小碗大胃","虾吃虾涮","福厨","纸上烤鱼",
 //        "伯克街面包坊","嘉华饼屋","黑氏巧克力","惠灵顿雪梨","布鲁克林塔菲","格雷厄姆大街肉","华夫饼 & 沃夫","眼光咖啡","震颤酒吧","巴拉菲娜","多尼西亚","皇家橡树","秦咖啡"]
@@ -53,6 +55,7 @@ class RestaurantTableViewCotroller: UITableViewController {
 //    ]
     
     var restaurants:[Restaurant] = []
+    var frv: NSFetchedResultsController!
     
     
     override func viewDidLoad() {
@@ -71,6 +74,60 @@ class RestaurantTableViewCotroller: UITableViewController {
         //还要将其设置为非固定行数（即，设置其lines属性为0）
         tableView.estimatedRowHeight = 20
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //取回数据
+        //1.获取AppDelegate中托管缓冲区对象
+        let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+        
+        //2.使用NSFetchRequest
+        let request = NSFetchRequest(entityName: "Restaurant")//请求指定entity
+        request.sortDescriptors = [NSSortDescriptor(key:"name", ascending: true)]//NSSortDescriptor指定结果以“name”排正序
+        
+        frv = NSFetchedResultsController(fetchRequest: request, managedObjectContext: buffer!, sectionNameKeyPath: nil, cacheName: nil)//初始化NSFetchedResultsController
+        frv.delegate = self //设置代理为本身控制器
+        
+        //3.让缓冲区执行数据库查询请求 executeFetchRequest
+        do{
+            //执行查询并将结果保存到数组中
+            try frv.performFetch()
+            restaurants = frv.fetchedObjects as! [Restaurant]
+            //数据保存后不会自动刷新tableView，需要使用NSFetchedResultsControllerDelegate协议更新
+        }catch{
+            print(error)
+        }
+    }
+    
+    //当数据库内容发生变化时，NSFetchedResultsControllerDelegate协议的以下方法会被调用
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        //当控制器开始处理内容时
+        tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        //内容发生变更时
+        switch type {//数据变更类型筛选
+        case .Insert:
+            if let _newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([_newIndexPath], withRowAnimation: .Automatic)//使用自动动画效果插入数据
+            }
+        case .Delete:
+            if let _indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([_indexPath], withRowAnimation: .Automatic)//使用自动动画效果删除数据
+            }
+        case .Update:
+            if let _indexPath = indexPath {
+                tableView.reloadRowsAtIndexPaths([_indexPath], withRowAnimation: .Automatic)//使用自动动画效果更新数据
+            }
+        default:
+            tableView.reloadData()//刷新数据
+        }
+        
+        restaurants = controller.fetchedObjects as! [Restaurant]//数据已经发生变化，同步到数组
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+        //当控制器已经处理完内容变更时
     }
 
     override func didReceiveMemoryWarning() {
@@ -193,19 +250,30 @@ class RestaurantTableViewCotroller: UITableViewController {
         
         shareAction.backgroundColor = UIColor(red: 218/255, green: 225/255, blue: 218/255, alpha: 0.7)
         
-//        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") { (action, indexPath) -> Void in
+        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") { (action, indexPath) -> Void in
 //            self.restaurants.removeAtIndex(indexPath.row)
 //            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//删除行，并有滑动效果
-//        }
-//        return [shareAction,deleteAction]
-        let favAction = UITableViewRowAction(style: .Default, title: "收藏") { (action, indexPath) -> Void in
-             let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
-             cell.favImg.hidden = false
-             self.restaurants[indexPath.row].isVisited = true
+            let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+            
+            let restaurantToDel = self.frv.objectAtIndexPath(indexPath) as! Restaurant // 获取待删除对象
+            
+            buffer?.deleteObject(restaurantToDel)
+            
+            do {
+                try buffer?.save()
+            }catch{
+                print(error)
+            }
         }
+        return [shareAction,deleteAction]
+//        let favAction = UITableViewRowAction(style: .Default, title: "收藏") { (action, indexPath) -> Void in
+//             let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
+//             cell.favImg.hidden = false
+//             self.restaurants[indexPath.row].isVisited = true
+//        }
         
-        favAction.backgroundColor = UIColor(red: 253/255, green: 165/255, blue: 66/255, alpha: 0.7)
-        return [shareAction,favAction]
+//        favAction.backgroundColor = UIColor(red: 253/255, green: 165/255, blue: 66/255, alpha: 0.7)
+//        return [shareAction,favAction]
     }
 
 
