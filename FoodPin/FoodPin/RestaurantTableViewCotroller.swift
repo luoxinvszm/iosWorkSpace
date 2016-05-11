@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 //NSFetchedResultsControllerDelegate 用于处理CoreData在tableView上的操作，提供数据变化时通知其代理的方法
-class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsControllerDelegate {
+//UISearchResultsUpdating 用于响应搜索条搜索更新
+class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsControllerDelegate,UISearchResultsUpdating {
 
 //    var restaurant = ["咖啡胡同","霍米","茶。家","洛伊斯咖啡","贝蒂生蚝","福奇餐馆","阿波画室","小碗大胃","虾吃虾涮","福厨","纸上烤鱼",
 //        "伯克街面包坊","嘉华饼屋","黑氏巧克力","惠灵顿雪梨","布鲁克林塔菲","格雷厄姆大街肉","华夫饼 & 沃夫","眼光咖啡","震颤酒吧","巴拉菲娜","多尼西亚","皇家橡树","秦咖啡"]
@@ -53,10 +54,32 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
 //        Restaurant(name:"秦咖啡",type:"饮品",location:"Unit 2, Eldon Chambers、30-32 Fleet St、London EC4Y 1AA",image:"023",isVisited:false) ,
 //
 //    ]
-    
+    var sr: [Restaurant] = [] //用于保存搜索结果
     var restaurants:[Restaurant] = []
     var frv: NSFetchedResultsController!
+    var sv: UISearchController!
     
+    //实现UISearchResultsUpdating协议需要实现此方法，当用户点搜索条，或者更改所搜文字，这个方法或被调用，通过实现这个方法，我们让搜索条控制器显示所搜结果
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if var textToSearch = sv.searchBar.text{
+            //过滤搜索串中的空格
+            textToSearch = textToSearch.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            
+            searchFilter(textToSearch)
+            tableView.reloadData()
+        }
+    }
+    
+    // 添加一个筛选器方法，返回包含搜索字符串的所有餐馆
+    func searchFilter(textToSearch: String){//Swift 中数组自带filter方法，参数是一个闭包。筛选符合条件的元素，组成一个新数据的返回
+        sr = restaurants.filter({ (r) -> Bool in
+            return r.name.containsString(textToSearch)
+        })
+        sr = restaurants.filter({ (r) -> Bool in
+            return r.location.containsString(textToSearch)
+        })
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +88,8 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+//        sv.searchResultsUpdater = self//搜索更新控制器设置为自身
+//        sv.dimsBackgroundDuringPresentation = false//搜索过背景不变暗
         
         //将导航返回按钮设置为仅有箭头
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
@@ -95,6 +120,23 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
         }catch{
             print(error)
         }
+        
+        //创建一个实例，参数为搜索结果的控制器;如果是nil，则显示搜索条所在的视图中、
+        sv = UISearchController(searchResultsController: nil)
+        //更新搜索结果的控制器为当前控制器
+        sv.searchResultsUpdater = self
+        //搜索时背景变暗
+        sv.dimsBackgroundDuringPresentation = false
+        //将列表的页眉试图设置为所搜条
+        tableView.tableHeaderView = sv.searchBar
+        //设置搜索框的占位符
+        sv.searchBar.placeholder="输入餐馆名搜索..."
+        //设置搜索框前景色
+//        sv.searchBar.tintColor=UIColor.orangeColor()
+        //设置搜索框背景色
+//        sv.searchBar.barTintColor=UIColor.blackColor()
+        //设置搜索框为透明样式
+        sv.searchBar.searchBarStyle = .Minimal
     }
     
     //当数据库内容发生变化时，NSFetchedResultsControllerDelegate协议的以下方法会被调用
@@ -145,17 +187,20 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return restaurants.count
+        return sv.active ? sr.count : restaurants.count
+//        return restaurants.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CustomTableViewCell
 
-        cell.name.text = restaurants[indexPath.row].name
-        cell.type.text = restaurants[indexPath.row].type
-        cell.location.text = restaurants[indexPath.row].location
-        cell.img.image = UIImage(data: restaurants[indexPath.row].image!)
+        let r = sv.active ? sr[indexPath.row] : restaurants[indexPath.row]
+        
+        cell.name.text = r.name
+        cell.type.text = r.type
+        cell.location.text = r.location
+        cell.img.image = UIImage(data: r.image!)
         cell.img.layer.cornerRadius = cell.img.frame.size.width / 2 //图片圆角化，正方形内切圆半径为正方形边长一半
         cell.img.clipsToBounds = true//图片布局生效
        
@@ -169,7 +214,7 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
 //        }
 //      cell.accessoryType = restaurants[indexPath.row].isVisited ? .Checkmark : .None
         cell.favImg.image = UIImage(named: "heart")
-        cell.favImg.hidden = restaurants[indexPath.row].isVisited.boolValue ? false : true
+        cell.favImg.hidden = r.isVisited.boolValue ? false : true
 
         return cell
     }
@@ -212,13 +257,13 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
     
     
 
-    /*
+
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return !sv.active
     }
-    */
+ 
 
     
     // Override to support editing the table view.滑动操作单元格
@@ -303,7 +348,7 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
             let destVC = segue.destinationViewController as! DetailTableViewController
             
             let position = tableView.indexPathForSelectedRow!.row
-            destVC.restaurant = restaurants[position]
+            destVC.restaurant = sv.active ? sr[position] : restaurants[position]
             
         }
         
