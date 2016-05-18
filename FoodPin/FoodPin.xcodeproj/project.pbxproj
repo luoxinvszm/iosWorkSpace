@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27019D781CA95610005E03D7 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27019D771CA95610005E03D7 /* DetailTableViewController.swift */; };
 		27019D7A1CA95CA5005E03D7 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27019D791CA95CA5005E03D7 /* DetailTableViewCell.swift */; };
+		270677D91CE38108008CA74B /* GuideContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270677D81CE38108008CA74B /* GuideContentViewController.swift */; };
 		272F014A1CB6427B00F373E8 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F01491CB6427B00F373E8 /* ReviewViewController.swift */; };
 		272F014C1CBA476600F373E8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272F014B1CBA476600F373E8 /* MapKit.framework */; };
 		2736DA8C1CBD3F1A003BFE6D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736DA8B1CBD3F1A003BFE6D /* MapViewController.swift */; };
@@ -16,6 +17,7 @@
 		2747CB4A1CBE8EAB005DBF47 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747CB491CBE8EAB005DBF47 /* AddRestaurantViewController.swift */; };
 		2785AD3D1CA016850047741A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2785AD3C1CA016850047741A /* CustomTableViewCell.swift */; };
 		27B8470E1CA80C08009E51FA /* Restaurant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B8470D1CA80C08009E51FA /* Restaurant1.swift */; };
+		27BF02261CEB446700F598E3 /* GuiderPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BF02251CEB446700F598E3 /* GuiderPageViewController.swift */; };
 		27C50AD91CC51E16000AA777 /* FoodPin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27C50AD71CC51E16000AA777 /* FoodPin.xcdatamodeld */; };
 		27C50ADC1CC51F8E000AA777 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C50ADA1CC51F8E000AA777 /* Restaurant+CoreDataProperties.swift */; };
 		27C50ADD1CC51F8E000AA777 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C50ADB1CC51F8E000AA777 /* Restaurant.swift */; };
@@ -48,6 +50,7 @@
 /* Begin PBXFileReference section */
 		27019D771CA95610005E03D7 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		27019D791CA95CA5005E03D7 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		270677D81CE38108008CA74B /* GuideContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GuideContentViewController.swift; path = ../GuideContentViewController.swift; sourceTree = "<group>"; };
 		272F01491CB6427B00F373E8 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		272F014B1CBA476600F373E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2736DA8B1CBD3F1A003BFE6D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		2785AD3C1CA016850047741A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		27B8470D1CA80C08009E51FA /* Restaurant1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant1.swift; sourceTree = "<group>"; };
 		27B8470F1CA80D13009E51FA /* Transform.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Transform.playground; sourceTree = "<group>"; };
+		27BF02251CEB446700F598E3 /* GuiderPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuiderPageViewController.swift; sourceTree = "<group>"; };
 		27C50AD81CC51E16000AA777 /* FoodPin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodPin.xcdatamodel; sourceTree = "<group>"; };
 		27C50ADA1CC51F8E000AA777 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27C50ADB1CC51F8E000AA777 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -127,8 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				27CA0CF21C9ECC8E009159DB /* AppDelegate.swift */,
+				270677D81CE38108008CA74B /* GuideContentViewController.swift */,
 				27C50AD71CC51E16000AA777 /* FoodPin.xcdatamodeld */,
 				27CA0CF61C9ECC8E009159DB /* Main.storyboard */,
+				27BF02251CEB446700F598E3 /* GuiderPageViewController.swift */,
 				2747CB491CBE8EAB005DBF47 /* AddRestaurantViewController.swift */,
 				2736DA8B1CBD3F1A003BFE6D /* MapViewController.swift */,
 				27CA0CF91C9ECC8E009159DB /* Assets.xcassets */,
@@ -303,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270677D91CE38108008CA74B /* GuideContentViewController.swift in Sources */,
 				27C50ADD1CC51F8E000AA777 /* Restaurant.swift in Sources */,
 				27019D781CA95610005E03D7 /* DetailTableViewController.swift in Sources */,
 				27C50AD91CC51E16000AA777 /* FoodPin.xcdatamodeld in Sources */,
@@ -312,6 +319,7 @@
 				2736DA8C1CBD3F1A003BFE6D /* MapViewController.swift in Sources */,
 				27C50ADC1CC51F8E000AA777 /* Restaurant+CoreDataProperties.swift in Sources */,
 				27CA0CF31C9ECC8E009159DB /* AppDelegate.swift in Sources */,
+				27BF02261CEB446700F598E3 /* GuiderPageViewController.swift in Sources */,
 				273813DA1CA52F1100C2EC4C /* RestaurantDetailsViewController.swift in Sources */,
 				2747CB4A1CBE8EAB005DBF47 /* AddRestaurantViewController.swift in Sources */,
 				272F014A1CB6427B00F373E8 /* ReviewViewController.swift in Sources */,

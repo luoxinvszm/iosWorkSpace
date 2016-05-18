@@ -81,6 +81,21 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
 
     }
     
+    //设置导航页
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if defaults.boolForKey("GuiderShowed") {
+            return
+        }
+        
+        if let pageVC = storyboard?.instantiateViewControllerWithIdentifier("GuideController") as? GuiderPageViewController {
+            presentViewController(pageVC, animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
