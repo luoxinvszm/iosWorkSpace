@@ -362,6 +362,8 @@ class RestaurantTableViewCotroller: UITableViewController,NSFetchedResultsContro
         if segue.identifier == "showRestaurantDetail" {
             let destVC = segue.destinationViewController as! DetailTableViewController
             
+            destVC.hidesBottomBarWhenPushed = true //隐藏tabBar，功能与在目标controller勾选Hide Bottom Bar on Push 一致
+            
             let position = tableView.indexPathForSelectedRow!.row
             destVC.restaurant = sv.active ? sr[position] : restaurants[position]
             

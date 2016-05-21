@@ -16,6 +16,8 @@
 		273813DA1CA52F1100C2EC4C /* RestaurantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273813D91CA52F1100C2EC4C /* RestaurantDetailsViewController.swift */; };
 		2747CB4A1CBE8EAB005DBF47 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747CB491CBE8EAB005DBF47 /* AddRestaurantViewController.swift */; };
 		2785AD3D1CA016850047741A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2785AD3C1CA016850047741A /* CustomTableViewCell.swift */; };
+		27A4A6E61CEFFC1B00C5FD2B /* discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A4A6E41CEFFC1B00C5FD2B /* discover.storyboard */; };
+		27A4A6E81CEFFC6000C5FD2B /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A4A6E71CEFFC6000C5FD2B /* about.storyboard */; };
 		27B8470E1CA80C08009E51FA /* Restaurant1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B8470D1CA80C08009E51FA /* Restaurant1.swift */; };
 		27BF02261CEB446700F598E3 /* GuiderPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BF02251CEB446700F598E3 /* GuiderPageViewController.swift */; };
 		27C50AD91CC51E16000AA777 /* FoodPin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27C50AD71CC51E16000AA777 /* FoodPin.xcdatamodeld */; };
@@ -57,6 +59,8 @@
 		273813D91CA52F1100C2EC4C /* RestaurantDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsViewController.swift; sourceTree = "<group>"; };
 		2747CB491CBE8EAB005DBF47 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		2785AD3C1CA016850047741A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		27A4A6E51CEFFC1B00C5FD2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/discover.storyboard; sourceTree = "<group>"; };
+		27A4A6E71CEFFC6000C5FD2B /* about.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		27B8470D1CA80C08009E51FA /* Restaurant1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant1.swift; sourceTree = "<group>"; };
 		27B8470F1CA80D13009E51FA /* Transform.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Transform.playground; sourceTree = "<group>"; };
 		27BF02251CEB446700F598E3 /* GuiderPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuiderPageViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				270677D81CE38108008CA74B /* GuideContentViewController.swift */,
 				27C50AD71CC51E16000AA777 /* FoodPin.xcdatamodeld */,
 				27CA0CF61C9ECC8E009159DB /* Main.storyboard */,
+				27A4A6E71CEFFC6000C5FD2B /* about.storyboard */,
+				27A4A6E41CEFFC1B00C5FD2B /* discover.storyboard */,
 				27BF02251CEB446700F598E3 /* GuiderPageViewController.swift */,
 				2747CB491CBE8EAB005DBF47 /* AddRestaurantViewController.swift */,
 				2736DA8B1CBD3F1A003BFE6D /* MapViewController.swift */,
@@ -283,6 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27CA0CFD1C9ECC8E009159DB /* LaunchScreen.storyboard in Resources */,
+				27A4A6E81CEFFC6000C5FD2B /* about.storyboard in Resources */,
+				27A4A6E61CEFFC1B00C5FD2B /* discover.storyboard in Resources */,
 				27CA0CFA1C9ECC8E009159DB /* Assets.xcassets in Resources */,
 				27CA0CF81C9ECC8E009159DB /* Main.storyboard in Resources */,
 			);
@@ -359,6 +367,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		27A4A6E41CEFFC1B00C5FD2B /* discover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27A4A6E51CEFFC1B00C5FD2B /* Base */,
+			);
+			name = discover.storyboard;
+			sourceTree = "<group>";
+		};
 		27CA0CF61C9ECC8E009159DB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
