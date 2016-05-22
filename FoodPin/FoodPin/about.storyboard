@@ -8,18 +8,31 @@
         <!--关于-->
         <scene sceneID="9ud-5W-Ybx">
             <objects>
-                <tableViewController id="C5F-kt-haz" sceneMemberID="viewController">
+                <tableViewController id="C5F-kt-haz" customClass="AboutTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8EB-7f-Td1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoxiaobo" id="jAu-nR-7na">
+                            <rect key="frame" x="0.0" y="64" width="600" height="85"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kRs-dC-Ffx">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="poT-tg-cQ8" style="IBUITableViewCellStyleDefault" id="kRs-dC-Ffx">
+                                <rect key="frame" x="0.0" y="177" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kRs-dC-Ffx" id="NgV-y5-aQE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="poT-tg-cQ8">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -29,10 +42,46 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="关于" id="q9n-8F-CW7"/>
+                    <connections>
+                        <segue destination="ADT-96-ZUC" kind="show" identifier="toWebView" id="sTM-yn-5AO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIT-wU-snB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-249" y="806"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="REg-af-3x8">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="ADT-96-ZUC" customClass="WebViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6hA-3q-u3V"/>
+                        <viewControllerLayoutGuide type="bottom" id="P6c-yx-kQt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dih-Lp-u6R">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jmy-cz-QOi">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jmy-cz-QOi" firstAttribute="width" secondItem="dih-Lp-u6R" secondAttribute="width" id="1Bv-BU-es4"/>
+                            <constraint firstItem="Jmy-cz-QOi" firstAttribute="centerX" secondItem="dih-Lp-u6R" secondAttribute="centerX" id="1a8-E0-HsV"/>
+                            <constraint firstItem="Jmy-cz-QOi" firstAttribute="height" secondItem="dih-Lp-u6R" secondAttribute="height" id="G6a-HT-qAZ"/>
+                            <constraint firstItem="Jmy-cz-QOi" firstAttribute="centerY" secondItem="dih-Lp-u6R" secondAttribute="centerY" id="wlI-fX-ode"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Jmy-cz-QOi" id="NwP-Z5-GDv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1y6-mQ-oEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="397" y="806"/>
         </scene>
         <!--关于-->
         <scene sceneID="Qka-fi-qJK">
@@ -55,5 +104,6 @@
     </scenes>
     <resources>
         <image name="about" width="25" height="25"/>
+        <image name="logoxiaobo" width="400" height="85"/>
     </resources>
 </document>
