@@ -27,7 +27,7 @@ class AddRestaurantViewController: UITableViewController, UIImagePickerControlle
         let buffer = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
         
         let restaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: buffer!) as! Restaurant
-        
+  
         restaurant.name = rName.text!
         restaurant.type = rType.text!
         restaurant.location = rAddr.text!
@@ -43,6 +43,10 @@ class AddRestaurantViewController: UITableViewController, UIImagePickerControlle
         }catch {
             print(error)
         }
+        
+        //保存到LeanCloud
+        saveRecordToCloud(restaurant)
+        
         performSegueWithIdentifier("unwindToHomeList", sender: sender)
     }
     
@@ -110,6 +114,34 @@ class AddRestaurantViewController: UITableViewController, UIImagePickerControlle
         dismissViewControllerAnimated(true, completion: nil)//相册视图退场
     }
     
+    
+    func saveRecordToCloud(restaurant: Restaurant){
+        //准备一条需要保存的数据，把Restaurant对象转换为一个AVObject
+        let record = AVObject(className: "Restaurant")
+        record["name"] = restaurant.name;
+        record["type"] = restaurant.type;
+        record["location"] = restaurant.location
+        
+        //图像尺寸重新调整，为减小上传文件的尺寸，宽度大于1024的图片进行压缩
+        let originImg = UIImage(data: restaurant.image!)!
+        let scalingFac = (originImg.size.width > 1024) ? (1024 / originImg.size.width) : 1.0
+        let scaledImg = UIImage(data: restaurant.image!, scale: scalingFac)!
+        //把图片转换为jpg格式，并用LeanCloud的File类型保存，对图像、视频等文件采用File类型
+        let imgFile = AVFile.fileWithName("\(restaurant.name).jpg", data:UIImageJPEGRepresentation(scaledImg, 0.8))
+        imgFile.saveInBackground()
+        
+        record["image"] = imgFile//把图像File关联到记录
+        
+        //后台保存并通知结果
+        record.saveInBackgroundWithBlock { (_, e) -> Void in
+            if let e = e {
+                print(e.localizedDescription)
+            }else{
+                print("保存成功！")
+            }
+        }
+     
+    }
     
 
     // MARK: - Table view data source

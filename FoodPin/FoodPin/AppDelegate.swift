@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        AVOSCloud.setApplicationId("DuIGWh8xlDAiHDirQdh6hg3w-gzGzoHsz", clientKey: "6jLulYeFEaPIyR8Tm5aPk76P")
+        
         // Override point for customization after application launch.
         //更改导航条颜色
         UINavigationBar.appearance().barTintColor = UIColor(red: 242/255, green: 116/255, blue: 119/255, alpha: 1)
