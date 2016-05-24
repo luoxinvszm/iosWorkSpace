@@ -8,13 +8,13 @@
         <!--发现-->
         <scene sceneID="hvr-91-hPE">
             <objects>
-                <tableViewController id="h5n-CU-gdJ" sceneMemberID="viewController">
+                <tableViewController id="h5n-CU-gdJ" customClass="DiscoverTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lf0-Nf-aMZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="21D-aj-0Us">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dCell" id="21D-aj-0Us" userLabel="Cell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="21D-aj-0Us" id="1qT-Zq-aC3">
@@ -29,8 +29,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="发现" id="5sb-z1-I4L"/>
+                    <connections>
+                        <outlet property="spinner" destination="n5R-97-ooO" id="dGh-zc-YoN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XbB-1F-CU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="n5R-97-ooO">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="-327" y="-605"/>
         </scene>
